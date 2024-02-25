@@ -24,4 +24,6 @@
     "host": "127.0.0.1",
     "dialect": "mysql"
   }
-  \
+  
+  
+  -once add the db config aslisted above, go to the src foldeer from your terminal and execute `npx sequelize db:create`
