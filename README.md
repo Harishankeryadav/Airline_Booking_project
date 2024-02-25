@@ -27,3 +27,6 @@
   
   
   -once add the db config aslisted above, go to the src foldeer from your terminal and execute `npx sequelize db:create`
+  
+  npx sequelize db:`file and attribute`
+  after that npx sequelize db:migerate
