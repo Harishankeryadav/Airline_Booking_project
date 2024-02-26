@@ -16,7 +16,7 @@ const create = async (req, res) => {
         return res.status(500).json({
             data: {},
             success: false,
-            message: 'Not able to create a city',
+            message: 'Not able to create a city ',
             err: error
         });
     }
@@ -24,9 +24,9 @@ const create = async (req, res) => {
 //delete -> /city/:id
 const destroy = async (req, res) => {
     try {
-        const city = await cityService.deleteCity(req.params.id);
+        const response = await cityService.createCity(req.params.id);
         return res.status(200).json({
-            data: city,
+            data: response,
             seccess: true,
             message: 'successfully deleted the city',
             err: {}
@@ -71,7 +71,7 @@ const update = async (req, res) => {
         return res.status(200).json({
             data: response,
             seccess: true,
-            message: 'successfully fetched the city',
+            message: 'successfully updated the city',
             err: {}
         });
 
