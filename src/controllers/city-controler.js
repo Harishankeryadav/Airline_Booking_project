@@ -7,7 +7,7 @@ const create = async (req, res) => {
         const city = await cityService.createCity(req.body);
         return res.status(201).json({
             data: city,
-            seccess: true,
+            success: true,
             message: 'successfully create a city',
             err: {}
         });
@@ -24,10 +24,10 @@ const create = async (req, res) => {
 //delete -> /city/:id
 const destroy = async (req, res) => {
     try {
-        const response = await cityService.createCity(req.params.id);
+        const response = await cityService.deleteCity(req.params.id);
         return res.status(200).json({
             data: response,
-            seccess: true,
+            success: true,
             message: 'successfully deleted the city',
             err: {}
         });
@@ -46,10 +46,10 @@ const destroy = async (req, res) => {
 //get. ->/city/:id
 const get = async (req, res) => {
     try {
-        const response = await cityService.deleteCity(req.params.id);
+        const response = await cityService.getCity(req.params.id);
         return res.status(200).json({
             data: response,
-            seccess: true,
+            success: true,
             message: 'successfully fetched the city',
             err: {}
         });
@@ -67,10 +67,10 @@ const get = async (req, res) => {
 //Patch -> /city/:id
 const update = async (req, res) => {
     try {
-        const response = await cityService.deleteCity(req.params.id, req.body);
+        const response = await cityService.updateCity(req.params.id, req.body);
         return res.status(200).json({
             data: response,
-            seccess: true,
+            success: true,
             message: 'successfully updated the city',
             err: {}
         });
