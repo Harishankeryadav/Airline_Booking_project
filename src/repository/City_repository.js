@@ -1,10 +1,15 @@
+const { op } = require('sequelize');
+
 const { City } = require('../models/index');
 
 class CityRepository {
-    async createCity({ name }) { 
+    async createCity({ name }) {
         try {
+            if(!name){
+                throw new Error("name is required.");
+            }
             const city = await City.create({
-                name
+                name : name
             });
             return city;
         } catch (error) {
@@ -46,24 +51,33 @@ class CityRepository {
         }
     }
 
-    async getCity(cityId){
+    async getCity(cityId) {
         try {
             const city = await City.findByPk(cityId);
             return city;
-            
+
         } catch (error) {
-            console.error("Error fetch city:", error); 
-            throw error;  
+            console.error("Error fetch city:", error);
+            throw error;
         }
     }
-    async getAllCity(){
+      async getAllCities(filter) { // filter can be empty also
         try {
+            if(filter.name) {
+                const cities = await City.findAll({
+                    where: {
+                        name: {
+                            [Op.startsWith]: filter.name
+                        }
+                    }
+                });
+                return cities;
+            }
             const cities = await City.findAll();
             return cities;
-            
         } catch (error) {
-            console.error("Error fetching all cities:", error); 
-            throw error;  
+            console.log("Something went wrong in the repository layer");
+            throw {error};
         }
     }
 }

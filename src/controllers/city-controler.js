@@ -16,7 +16,7 @@ const create = async (req, res) => {
         return res.status(500).json({
             data: {},
             success: false,
-            message: 'Not able to create a city',
+            message: 'Not able to create a city- City-controller',
             err: error
         });
     }
@@ -37,7 +37,7 @@ const destroy = async (req, res) => {
         return res.status(500).json({
             data: {},
             success: false,
-            message: 'Not able to delete the city',
+            message: 'Not able to delete the city- City-controller',
             err: error
         });
     }
@@ -59,7 +59,7 @@ const get = async (req, res) => {
         return res.status(500).json({
             data: {},
             success: false,
-            message: 'Not able to get the city',
+            message: 'Not able to get the city- City-controller',
             err: error
         });
     }
@@ -80,7 +80,7 @@ const update = async (req, res) => {
         return res.status(500).json({
             data: {},
             success: false,
-            message: 'Not able to update the city',
+            message: 'Not able to update the city- City-controller',
             err: error
         });
     }
@@ -88,24 +88,24 @@ const update = async (req, res) => {
 
 const getAll = async (req, res) => {
     try {
-        const cities = await cityService.getAllCities();
+        const cities = await cityService.getAllCities(req.query);
         return res.status(200).json({
             data: cities,
             success: true,
-            message: 'successfully fetched all cities',
+            message: 'Successfully fetched all cities',
             err: {}
         });
-    }
-    catch (error) {
+    } catch (error) {
         console.log(error);
         return res.status(500).json({
             data: {},
             success: false,
-            message: 'Not able to fetch the city in getAll',
+            message: 'Not able to fetch the cities',
             err: error
         });
     }
 }
+
 
 module.exports = {
     create,
