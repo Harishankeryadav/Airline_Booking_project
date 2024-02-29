@@ -5,6 +5,8 @@ const  {PORT}  = require("./config/serverconfig.js");
 const ApiRoutes = require('./routes/index');
 
 const{Airport, City} = require('./models/index.js');
+const {Airplane} = require('./models/index.js');
+
 const db = require('./models/city')
 
 const CityRepository = require(('./repository/City_repository.js'))
@@ -33,6 +35,10 @@ const setupAndStartServer = async () => {
         // if(process.env.SYNC_DB){
         //     db.sequelize.sync({alter:true});
         // }
+        await Airplane.create({
+            modelNumber: "Fly Emirates",
+            // capacity:333
+        });
     });
 }
 
