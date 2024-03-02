@@ -1,7 +1,8 @@
 const express = require('express');
-const CityController = require('../../controllers/city-controler');
 
-const CityController = require('../../controllers/city-controller');
+const { FlightMiddlewares } = require('../../middleswares/index');
+
+const CityController = require('../../controllers/city-controler');
 const FlightController = require('../../controllers/flight-controller');
 const AirportController = require('../../controllers/airport-controller');
 const router = express.Router();
